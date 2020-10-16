@@ -3,19 +3,17 @@
 ###  Background - This is a project that takes UFO sighting data and using Javascript filters data as needed and displays in html format.
 
 1. **Dataset**
+* [UFO Sightings Data](/static/js/data.js)  : data.js has the following structure :
 
-* [UFO Sightings Data](/static/js/data.js)
-data.js
-has the following structure :
-[{
-    datetime: "",
-    city: "",
-    state: "",
-    country: "",
-    shape: "",
-    durationMinutes: "",
-    comments: ""
-  }}
+        [{
+            datetime: "",
+            city: "",
+            state: "",
+            country: "",
+            shape: "",
+            durationMinutes: "",
+            comments: ""
+          }}
 
 2.  **UFO-level-1** 
 Automatic Table and Date Search:
@@ -25,15 +23,14 @@ This folder has the index.html, app.js and data.js to do a simple filter on just
 3. **UFO-level-2**
 Multiple Search Categories:
 This folder has the index.html, app.js and data.js to do a filter based on the dropdown values.  I have added a message as to what data was selected by the user, depending on the choice, the data gets filtered.  The following columns are in the dropdown and can be searched on :
-1. `date/time`
-2. `city`
-3. `state`
-4. `country`
-5. `shape`
+            - `date/time`
+            - `city`
+            - `state`
+            - `country`
+            - `shape`
 
-**Note **
+### Note
 For both search types, if the filter search doesnt return any results, I show the whole table to take us back to the whole data set instead of an empty table.
-
 
 
 
