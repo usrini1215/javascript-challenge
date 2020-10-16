@@ -8,6 +8,8 @@ var h3 = d3.select("h3");
 //just trial print
 console.log('first')
 console.log(data)
+
+// print the whole table
 printTabledata(tableData);
 
 var submit = d3.select("#filter-btn");
@@ -30,11 +32,7 @@ function filterChoice(filtfield, filtval) {
     // only data from filter choices
     console.log('param values:')
     console.log(filtfield + ' ' + filtval)
-    // var typeVal = d3.select("label").attr("for")
-    // console.log('typeval');
-    // console.log(typeVal)
-    //filteredData = tableData.filter(val => val.filtfield === filtval);
-    
+     
     if (filtfield == 'datetime'){
         filteredData = tableData.filter(val => val.datetime === filtval);
     }
@@ -74,19 +72,6 @@ function handleClick() {
     console.log(ufodata.value)
 
     filterChoice(ufodata.value,filtDateVal)
-
-    // only data from benton
-    // filteredData = tableData.filter(val => val.datetime === filtDateVal)
-    // console.log('third');
-    // console.log(filteredData);
-    // if (filteredData.length > 0){
-    //     h3.text('Filtered Data Set for : ' + filtDateVal)
-    //     printTabledata(filteredData); 
-    // }
-    // else {
-    //     h3.text('No data found for ( ' + filtDateVal + ' ) so heres the whole data set!!!')
-    //     printTabledata(tableData);       
-    // } 
 
   }
   // We can use the `on` function in d3 to attach an event to the handler function
