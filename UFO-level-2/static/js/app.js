@@ -28,50 +28,75 @@ function printTabledata(tdata) {
     });
 }
 
-function filterChoice(filtfield, filtval) {
+function filterChoice(filtfield, filtval1,filtval2) {
     // only data from filter choices
     console.log('param values:')
-    console.log(filtfield + ' ' + filtval)
+    console.log(filtfield + ' ' + filtval1 + ' ' + filtval2)
+    if (filtval2.trim().length > 0) {
+        switch(filtfield) {
+            case "city":
+                filteredData = tableData.filter(val => val.city === filtval1 && val.datetime === filtval2);
+                break;
+            case "state":
+                filteredData = tableData.filter(val => val.state === filtval1 && val.datetime === filtval2);
+                break;
+            case "country":
+                filteredData = tableData.filter(val => val.country === filtval1 && val.datetime === filtval2);
+                break;
+            case "shape":
+                filteredData = tableData.filter(val => val.shape === filtval1 && val.datetime === filtval2);
+                break;
+        }
+    } 
+    else {
+        switch(filtfield) {
+            case "city":
+                filteredData = tableData.filter(val => val.city === filtval1);
+                break;
+            case "state":
+                filteredData = tableData.filter(val => val.state === filtval1);
+                break;
+            case "country":
+                filteredData = tableData.filter(val => val.country === filtval1);
+                break;
+            case "shape":
+                filteredData = tableData.filter(val => val.shape === filtval1);
+                break;
+        }       
+    }      
      
-    if (filtfield == 'datetime'){
-        filteredData = tableData.filter(val => val.datetime === filtval);
-    }
-    else if (filtfield == 'city'){
-        filteredData = tableData.filter(val => val.city === filtval);
-    }
-    else if (filtfield == 'state'){
-        filteredData = tableData.filter(val => val.state === filtval);
-    }
-    else if (filtfield == 'country'){
-        filteredData = tableData.filter(val => val.country === filtval);
-    }
-    else if (filtfield == 'shape'){
-        filteredData = tableData.filter(val => val.shape === filtval);
-    }
 
     console.log('third2');
     console.log(filteredData);
     if (filteredData.length > 0){
-        h3.text('Filtered Data Set for ( ' + filtfield + ' = ' + filtval + ' )')
+        h3.text('Filtered Data Set for ( ' + filtfield + ' = ' + filtval1 + ' and date = ' + filtval2 + ' )')
         printTabledata(filteredData); 
     }
     else {
-        h3.text('No data found for ( ' + filtfield + ' = ' + filtval + ' ) so heres the whole data set!!!')
+        h3.text('No data found for ( ' + filtfield + ' = ' + filtval1 + ' and date = ' + filtval2 +' ) so heres the whole data set!!!')
         printTabledata(tableData);       
     } 
+
 }
 
 function handleClick() {
   
     var filtValue = d3.select(".form-control")
-    var filtDateVal = filtValue.property("value")
+    var firstFiltVal = filtValue.property("value")
+
+    var secFilt = d3.select(".form-control2")
+    var secFiltVal = secFilt.property("value")
+
+    console.log('secfilt')
+    console.log(secFiltVal)
+
 
     console.log('sec')
-    console.log(filtDateVal)
+    console.log(firstFiltVal)
     console.log('third')
     console.log(ufodata.value)
 
-    filterChoice(ufodata.value,filtDateVal)
+    filterChoice(ufodata.value,firstFiltVal,secFiltVal)
 
   }
   // We can use the `on` function in d3 to attach an event to the handler function
